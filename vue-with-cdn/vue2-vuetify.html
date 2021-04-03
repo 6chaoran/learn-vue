@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <!-- app bar -->
+            <v-app-bar app dense dark color = "purple">
+                <v-app-bar-nav-icon @click="sidebar=!sidebar"></v-app-bar-nav-icon>
+                <v-app-bar-title>
+                    {{ app_title }}
+                </v-app-bar-title>
+            </v-app-bar>
+
+            <v-main>
+                <!-- fixed side bar -->
+                <v-navigation-drawer absolute right width="350px">
+                    <v-list>
+                        <v-subheader>
+                            General Setting
+                        </v-subheader>
+                        <v-list-item>
+                            <v-list-item-content>
+                                <v-list-item-title>
+                                    Username
+                                </v-list-item-title>
+                                <v-list-item-subtitle>
+                                    Input your username
+                                </v-list-item-subtitle>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-list>
+       
+                    <v-divider></v-divider>
+
+                    <v-list>
+                        
+                    </v-list>
+   
+                </v-navigation-drawer>
+                <!-- slide side bar -->
+                <v-navigation-drawer v-model="sidebar" absolute left>
+
+                </v-navigation-drawer>
+                <v-container class="shifted">
+                    <h1>Hello World!</h1>
+                   </v-container>
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            vuetify: new Vuetify(),
+            data: function () {
+                return {
+                    app_title: "Vuetify Dashboard with Sidebar",
+                    sidebar: false,
+                }
+            },
+            mounted: function(){
+                // update the app title
+                document.title = this.app_title
+            }
+        })
+    </script>
+    <style>
+        .shifted {
+            /* sidebar width + 50px */
+            margin-right: 400px; 
+            /* sidebar width + 2 * 50px */
+            max-width: calc(100vw - 450px);
+        }
+    </style>
+</body>
+
+</html>
